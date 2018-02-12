@@ -1,0 +1,19 @@
+{{> header }}
+
+<h1>{{ title }}</h1>
+<p>{{ description }}</p>
+
+<article>
+  <ul>
+    {{#each collections.posts}}
+    <li>
+      <h3 style="margin-bottom: 0.1em;">
+        <a href={{this.path}}>{{this.title}}</a>
+      </h3>
+      <span>{{ this.date }}</span>
+    </li>
+    {{/each}}
+  </ul>
+</article>
+
+{{> footer }}
