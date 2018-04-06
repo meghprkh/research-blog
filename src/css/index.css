@@ -1,9 +1,22 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css";
+/* @import "https://unpkg.com/normalize.css@8.0.0/normalize.css"; */
+@import "https://cdn.rawgit.com/AndrewBelt/WiTeX/master/style.css";
 
 textarea#encrypted {
   display: none;
 }
 
-.container {
+.container,
+header,
+footer {
   max-width: 50rem;
+  margin: 0 auto;
+}
+
+header {
+  border-bottom: 1px solid black;
+}
+
+footer {
+  border-top: 1px solid black;
 }
