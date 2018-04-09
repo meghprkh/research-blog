@@ -21,6 +21,7 @@ Metalsmith(__dirname)
     generator: "Metalsmith",
     url: isDev ? "http://localhost:8080/" : process.env.PUBLIC_URL,
     password: isDev ? "password" : process.env.PASSWORD,
+    ga_tracking_id: process.env.GA_TRACKING_ID,
     watch: isDev
   })
   .source("./src")
