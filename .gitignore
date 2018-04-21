@@ -84,3 +84,4 @@ build
 cache
 src/posts/*
 !src/posts/hello-world.md
+config.sh

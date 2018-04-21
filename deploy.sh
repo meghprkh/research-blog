@@ -1,15 +1,19 @@
 #!/bin/bash
 
-PUBLIC_URL="https://example.com/rblog"
-PASSWORD="password"
+if [ ! -f config.sh ]; then
+  echo "No config.sh found! Please see config-example.sh."
+  exit 1
+fi
 
-GA_TRACKING_ID="" # leave blank for no analytics
-
-SSH_HOST="example.com"
-SSH_USER="megh.parikh"
-REMOTE_DIRECTORY="public_html/rblog"
+source config.sh
 
 export PUBLIC_URL PASSWORD GA_TRACKING_ID
 yarn build
 
-rsync -avz -e ssh build/ $SSH_USER@$SSH_HOST:$REMOTE_DIRECTORY
+RSYNC_CMD="rsync -avz -e ssh build/ $SSH_USER@$SSH_HOST:$REMOTE_DIRECTORY"
+
+if [ -n "$SSH_PASS" ]; then
+  sshpass -p "$SSH_PASS" $RSYNC_CMD
+else
+  eval "$RSYNC_CMD"
+fi
