@@ -42,7 +42,7 @@ Metalsmith(__dirname)
   .use(
     collections({
       posts: {
-        pattern: "posts/*.md",
+        pattern: "posts/**/*.md",
         sortBy: "date",
         reverse: true
       }
