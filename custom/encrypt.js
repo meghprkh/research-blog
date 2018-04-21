@@ -1,6 +1,7 @@
 // Encrypts contents of all files using aes-256-cbc
 
 var crypto = require("crypto");
+var extname = require("path").extname;
 
 function encrypt(buffer, password) {
   var cipher = crypto.createCipher("aes-256-cbc", password);
@@ -13,6 +14,7 @@ module.exports = function() {
   return function(files, metalsmith, done) {
     setImmediate(done);
     Object.keys(files).forEach(function(fname) {
+      if (extname(fname) !== ".html") return;
       var file = files[fname];
       file.contents = encrypt(file.contents, metalsmith._metadata.password);
     });
