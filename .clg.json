@@ -1,0 +1,9 @@
+{
+  "newDirs": {
+    "post": {
+      "dir": "src/posts",
+      "assetDir": true
+    },
+    "draft": "src/drafts"
+  }
+}
