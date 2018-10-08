@@ -5,6 +5,7 @@ var collections = require("metalsmith-collections");
 var webpack = require("metalsmith-webpack-2").default;
 var discoverHelpers = require("metalsmith-discover-helpers");
 var discoverPartials = require("metalsmith-discover-partials");
+var moveRemove = require("metalsmith-move-remove");
 var watch = require("metalsmith-watch");
 var serve = require("metalsmith-serve");
 var markdown = require("./custom/markdown");
@@ -62,6 +63,7 @@ Metalsmith(__dirname)
       default: "post.hbs"
     })
   )
+  .use(moveRemove({ remove: ["posts/*"] }))
   .use(webpack(webpackConfig))
   .use(
     isDev &&
