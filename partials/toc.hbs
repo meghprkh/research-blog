@@ -1,0 +1,44 @@
+<div id="toc">
+  <b>Table of contents</b>
+</div>
+
+<style>
+@import "https://unpkg.com/html-table-of-contents@0.1.1/html-table-of-contents.css";
+
+#toc {
+  margin: 0.5em;
+  padding: 1em;
+  background-color: #f1f2fe;
+}
+</style>
+
+<script>
+
+// Adapted from https://www.npmjs.com/package/html-table-of-contents
+function htmlTableOfContents (documentRef, contentElement) {
+    var documentRef = documentRef || document;
+    var toc = documentRef.getElementById('toc');
+    var headings = [].slice.call(contentElement.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+    headings.forEach(function (heading, index) {
+        var anchor = documentRef.createElement('a');
+        anchor.setAttribute('name', 'toc' + index);
+        anchor.setAttribute('id', 'toc' + index);
+
+        var link = documentRef.createElement('a');
+        link.setAttribute('href', '#toc' + index);
+        link.textContent = heading.textContent;
+
+        var div = documentRef.createElement('div');
+        div.setAttribute('class', heading.tagName.toLowerCase());
+
+        div.appendChild(link);
+        toc.appendChild(div);
+        heading.parentNode.insertBefore(anchor, heading);
+    });
+}
+
+function createToc() {
+  htmlTableOfContents(document, document.getElementById('contents'));
+}
+
+</script>

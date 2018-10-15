@@ -25,4 +25,5 @@ window.addEventListener("load", function() {
     window.logout();
   }
   document.getElementById("contents").innerHTML = content;
+  createToc();
 });
